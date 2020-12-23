@@ -9,7 +9,11 @@
         {
             var log = new LoggerConfiguration()
                 .WriteTo.Console()
-                .WriteTo.DatadogLogs("<API_KEY>", configuration: new DatadogConfiguration { Url = "https://http-intake.logs.datadoghq.eu" })
+                .WriteTo.DatadogLogs("<API_KEY>",
+                    configuration: new DatadogConfiguration { Url = "https://http-intake.logs.datadoghq.eu" },
+                    source: "CSharp",
+                    service: "TrickyService",
+                    host: "Server1")
                 .CreateLogger();
 
             log.Information("Test");
